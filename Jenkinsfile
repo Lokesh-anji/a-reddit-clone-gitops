@@ -31,11 +31,10 @@ pipeline {
                     git add deployment.yaml
                     git commit -m "Updated Deployment Manifest"
                 """
-                    sh "git push https://github.com/Lokesh-anji/a-reddit-clone-gitops main"
                 
-                // withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                //     sh "git push https://github.com/Lokesh-anji/a-reddit-clone-gitops main"
-                // }
+                withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                    sh "git push https://github.com/Lokesh-anji/a-reddit-clone-gitops.git main"
+                }
             }
          }
     }
